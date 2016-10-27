@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aliceresponde="http://schemas.android.com/apk/res-auto">
+
+    <item android:title="First"
+          android:id="@+id/action_first"
+          android:icon="@android:drawable/arrow_up_float"
+          aliceresponde:showAsAction="always"
+          android:orderInCategory="1"
+        />
+
+    <item android:title="Second"
+        android:id="@+id/action_second"
+        android:icon="@android:drawable/ic_delete"
+        aliceresponde:showAsAction="never"
+        android:orderInCategory="2"
+        />
+
+    <item android:title="Settings"
+        android:id="@+id/action_settings"
+        android:icon="@android:drawable/ic_menu_manage"
+        aliceresponde:showAsAction="always"
+        android:orderInCategory="3"
+        />
+
+</menu>
