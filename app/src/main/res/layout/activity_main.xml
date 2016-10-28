@@ -12,6 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Click me"
+        android:onClick="showAlert"
         android:id="@+id/btnClickMe"
         />
 
@@ -20,5 +21,26 @@
         android:layout_height="wrap_content"
         android:src="@mipmap/ic_launcher"
         android:id="@+id/imgViewAndroid"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Progress Spiner"
+        android:onClick="showSpinerProgressDialog"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Progress Horizontal"
+        android:onClick="showHorizontalProgressDialog"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Custom Dialog"
+        android:onClick="showCustomDialog"
         />
 </LinearLayout>

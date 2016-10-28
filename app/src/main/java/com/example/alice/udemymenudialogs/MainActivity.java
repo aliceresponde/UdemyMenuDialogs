@@ -1,5 +1,9 @@
 package com.example.alice.udemymenudialogs;
 
+import android.app.Dialog;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.ContextMenu;
@@ -29,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Link context menues per View
+     * inflate - Link context menues per View
      *
      * @param menu
      * @param v
@@ -114,5 +118,98 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    /**
+     * AlertDialog not cancelable, with positive, negative buttons, title and message
+     * Using AlertDialog.Builder
+     * @param view
+     */
+    public void showAlert(View view) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("AlertDialog")
+                .setMessage("Do you want to kill the app?")
+                .setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        MainActivity.this.finish();
+                    }
+                })
+                .setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                })
+                .setCancelable(false);
+
+        AlertDialog dialog = builder.create();
+         dialog.show();
+    }
+
+    /**
+     * User spinner Style
+     * indefined tieme
+     * cancelable
+     * @param view
+     */
+    public void showSpinerProgressDialog(View view) {
+        ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setTitle("Loading");
+        progressDialog.setMessage("User profile");
+        progressDialog.setIndeterminate(true);
+        progressDialog.setCancelable(true);
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+
+        progressDialog.show();
+    }
+
+    /**
+     * Note:  it must to be indeterminate, and show before set progress
+     * @param view
+     */
+    public void showHorizontalProgressDialog(View view) {
+        ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setTitle("Loading");
+        progressDialog.setMessage("User profile");
+        progressDialog.setIndeterminate(false);
+        progressDialog.setCancelable(true);
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+        progressDialog.show();
+
+        progressDialog.setProgress(30);
+    }
+
+    /**
+     *
+     * @param view
+     */
+    public void showCustomDialog(View view) {
+
+        final Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.custom_dialog);
+
+        Button btnAdd = (Button) dialog.findViewById(R.id.btnAdd);
+        Button btnCancel = (Button) dialog.findViewById(R.id.btnCancel);
+
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "Contact Added", Toast.LENGTH_SHORT).show();
+                dialog.cancel();
+            }
+        });
+
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.cancel();
+            }
+        });
+
+        dialog.setTitle("Contacts");
+        dialog.setCancelable(false);
+        dialog.show();
+
     }
 }
